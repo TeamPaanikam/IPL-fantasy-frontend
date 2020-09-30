@@ -1,5 +1,5 @@
 {
     "APIConfig": {
-        "baseURL": "http://localhost:8000"
+        "baseURL": "https://satta-group-backend.herokuapp.com"
     }
 }
