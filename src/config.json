@@ -1,5 +1,5 @@
 {
     "APIConfig": {
-        "baseURL": "https://satta-group-backend.herokuapp.com/"
+        "baseURL": "https://satta-group-backend.herokuapp.com"
     }
 }
