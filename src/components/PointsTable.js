@@ -13,7 +13,7 @@ class PointsTable extends React.Component {
             .then(data => {
 
                 data.sort((a, b)=>{
-                    return b.currScore - a.currScore ;
+                    return b.currScore + b.cumScore - a.currScore - a.cumScore;
                 })
                 let index = data.findIndex((element)=> element.username === 'shrey@satta.group');
                 let element = data[index];
@@ -31,15 +31,17 @@ class PointsTable extends React.Component {
                 <table className="table">
                     <thead>
                         <tr className="tableheader">
+                            <th className="tablerow">Position</th>
                             <th className="tablerow">Name</th>
-                            <th className="tablerow">currScore</th>
-                            <th className="tablerow">cumScore</th>
+                            <th className="tablerow">Current Score</th>
+                            <th className="tablerow">Cumulative Score</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            this.state.data.map((r) =>
+                            this.state.data.map((r, index) =>
                                 (<tr className="tablerow" key={r._id}>
+                                    <td className="tablerow">{index !== 8 ? index + 1: 'Last'}</td>
                                     <td className="tablerow">{this.capitalizeFirstLetter(r.username.split('@')[0])}</td>
                                     <td className="tablerow">{r.currScore}</td>
                                     <td className="tablerow">{r.cumScore + r.currScore}</td>

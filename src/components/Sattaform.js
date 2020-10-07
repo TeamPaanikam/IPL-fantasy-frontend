@@ -1,25 +1,25 @@
 
 import React from 'react';
 import Checkbox from './Checkbox/Checkbox.jsx';
+import Teams from './Teams.js';
 
 
 
 class SattaForm extends React.Component {
     serverEndpoint = require('../config.json').APIConfig.baseURL
     state = {
-        loading: false,
-        alreadySelected: this.props.alreadySelected,
+        alreadySelected: false,
+        loading: true,
         selected: 0,
-        batsmen: ['Warner', 'Azim', 'Shrey'],
-        bowlers: ['Warner', 'Azim', 'Shrey'],
-        wk: ['Warner', 'Azim', 'Shrey'],
-        allrounders: ['Warner', 'Azim', 'Shrey'],
+        batsmen: [],
+        bowlers: [],
+        wk: [],
+        allrounders: [],
         selectedBatsmen: [],
         selectedBowlers: [],
         selectedWK: [],
         selectedAllRounders: [],
         teams: []
-        // { "bhanu": ["abd", "vk"], "shrey": ["abd", "vk"] }
     };
 
     componentDidMount() {
@@ -127,7 +127,7 @@ class SattaForm extends React.Component {
         }
         ).then(response => response.json())
             .then(data => {
-    
+
                 alert('Satta successful')
                 this.setState({ alreadySelected: true })
             })
@@ -137,38 +137,29 @@ class SattaForm extends React.Component {
     }
     render() {
         return (
-            this.state.loading ? (<div>Loading, Ruk zara</div>) : (
-                this.state.alreadySelected ? (<div><h1>Teams</h1>
-                    {
-                        this.state.teams.map((team) => {
-                            if (team.sattaLagaDiya) {
-                                return (<div> <h4>{this.capitalizeFirstLetter(team.username.split('@')[0])} </h4>{team.players.map((player, index) => index === team.players.length - 1 ? (player) : (player + ", "))}</div>)
-                            }
-                            else return "";
-                        })
-                    }
-                    <hr /> </div>) : (
-                        <div className="sattaform">
-                            <form>
-                                <h2>Batsmen</h2>
-                                <Checkbox name={'batsmen'} options={this.state.batsmen} onChange={(event) => { this.choose(event) }} />
+            this.state.loading ? (<h1>Loading Satta form</h1>) : (
+                !this.props.status || this.state.alreadySelected ? (<div><Teams teams={this.state.teams} /></div>) : (
+                    <div className="sattaform">
+                        <form>
+                            <h2>Batsmen</h2>
+                            <Checkbox name={'batsmen'} options={this.state.batsmen} onChange={(event) => { this.choose(event) }} />
 
-                                <h2>All rounders</h2>
+                            <h2>All rounders</h2>
 
-                                <Checkbox name={'all'} options={this.state.allrounders} onChange={(event) => { this.choose(event) }} />
+                            <Checkbox name={'all'} options={this.state.allrounders} onChange={(event) => { this.choose(event) }} />
 
-                                <h2> Wicket Keepers</h2>
+                            <h2> Wicket Keepers</h2>
 
-                                <Checkbox name={'wk'} options={this.state.wk} onChange={(event) => { this.choose(event) }} />
+                            <Checkbox name={'wk'} options={this.state.wk} onChange={(event) => { this.choose(event) }} />
 
-                                <h2>Bowler</h2>
+                            <h2>Bowler</h2>
 
-                                <Checkbox name={'bowlers'} options={this.state.bowlers} onChange={(event) => { this.choose(event) }} />
+                            <Checkbox name={'bowlers'} options={this.state.bowlers} onChange={(event) => { this.choose(event) }} />
 
-                                <button className="btn btn-satta" onClick={(event) => { event.preventDefault(); this.submitSatta() }}>Submit Satta</button>
-                            </form>
-                        </div>
-                    )
+                            <button className="btn btn-satta" onClick={(event) => { event.preventDefault(); this.submitSatta() }}>Submit Satta</button>
+                        </form>
+                    </div>
+                )
             )
         )
     }

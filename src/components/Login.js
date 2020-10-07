@@ -33,7 +33,7 @@ export default function Login() {
     function logout() {
         cookies.remove('token')
         cookies.remove('username')
-        setUser({authenticated:false, token: null})
+        setUser({ authenticated: false, token: null })
     }
 
     function handleChange(event) {
@@ -82,12 +82,10 @@ export default function Login() {
             {user.authenticated ?
                 (
                     <div className="searchContainer">
-                        <h1>
-                            Welcome to the Satta Site.
-                        </h1>
                         {
-                            (sattaOn && !sattaLagaDiya) ? (<SattaForm user={user} alreadySelected={false}/>)
-                                : (<div><SattaForm user={user} alreadySelected={true} /> </div>)
+                            (<div>
+                                <SattaForm user={user} status={ sattaOn && !sattaLagaDiya} />
+                            </div>)
                         }
                         <Table />
 
@@ -95,17 +93,17 @@ export default function Login() {
                 ) : (<div className="searchContainer">
                     <div className="flexchild">
                         <h2>Login</h2>
-                        <p style={{ color: "grey" }}> Please enter the following details: </p>
+                        <p> Please enter the following details: </p>
                     </div>
                     <form className="flexchild">
-                        <label htmlFor="Email">Username</label>
+                        <label htmlFor="Email"><span>Username</span></label>
                         <br />
                         <input type="text" className="textbox" id="email" onChange={(event) => {
                             event.preventDefault();
                             handleChange(event);
                         }} />
                         <br />
-                        <label htmlFor="url">Password</label>
+                        <label htmlFor="url"><span>Password</span></label>
                         <br />
                         <input type="password" className="textbox" id="password" onChange={(event) => {
                             event.preventDefault();
@@ -122,7 +120,7 @@ export default function Login() {
                 )
             }
             <h4 align="center">
-                <p onClick={()=> {logout()}}>
+                <p onClick={() => { logout() }}>
                     Logout
                 </p>
                 <strike>
