@@ -30,6 +30,12 @@ export default function Login() {
         }
     }, [])
 
+    function logout() {
+        cookies.remove('token')
+        cookies.remove('username')
+        setUser({authenticated:false, token: null})
+    }
+
     function handleChange(event) {
         switch (event.target.id) {
             case 'email': setEmail(event.target.value.toLowerCase())
@@ -54,9 +60,11 @@ export default function Login() {
                 if (data.authenticated) {
                     setUser({ authenticated: true, token: data.token, username: email })
                     cookies.set('token', data.token, {
-                        expires: Date.now()+ 2592000000
+                        maxAge: 2592000000
                     });
-                    cookies.set('username', email)
+                    cookies.set('username', email, {
+                        maxAge: 2592000000
+                    });
                     setSattaOn(data.sattaOn)
                     kyaSattaLagadiya(data.sattaLagaDiya)
                     setEmail("")
@@ -114,6 +122,9 @@ export default function Login() {
                 )
             }
             <h4 align="center">
+                <p onClick={()=> {logout()}}>
+                    Logout
+                </p>
                 <strike>
                     RCB HI JEETEGI
                 </strike>
