@@ -41,7 +41,7 @@ class PointsTable extends React.Component {
                         {
                             this.state.data.map((r, index) =>
                                 (<tr className="tablerow" key={r._id}>
-                                    <td className="tablerow">{index !== 8 ? index + 1: 'Last'}</td>
+                                    <td className="tablerow">{index +1}</td>
                                     <td className="tablerow">{this.capitalizeFirstLetter(r.username.split('@')[0])}</td>
                                     <td className="tablerow">{r.currScore}</td>
                                     <td className="tablerow">{r.cumScore + r.currScore}</td>

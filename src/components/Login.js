@@ -81,13 +81,14 @@ export default function Login() {
         <article className="room">
             {user.authenticated ?
                 (
+
                     <div className="searchContainer">
+                        <Table />
                         {
                             (<div>
-                                <SattaForm user={user} status={ sattaOn && !sattaLagaDiya} />
+                                <SattaForm user={user} status={sattaOn && !sattaLagaDiya} />
                             </div>)
                         }
-                        <Table />
 
                     </div>
                 ) : (<div className="searchContainer">
@@ -114,6 +115,11 @@ export default function Login() {
                         <button className="btn" onClick={(event) => {
                             event.preventDefault();
                             handleSubmit(event)
+                        }} onKeyDown={(event) => {
+                            if (event.key === 'Enter') {
+                                event.preventDefault()
+                                handleSubmit(event);
+                            }
                         }}>Submit</button>
                     </form>
                 </div>

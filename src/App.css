@@ -12,7 +12,7 @@
 }
 
 .searchContainer{
-    background-color: #444444;
+    background-color: #525252;
     display: flex;
     padding:2em;
     flex-direction: column;
@@ -47,45 +47,48 @@
 .table{
     width: 100%;
     text-align: center;
-    padding: 2rem;
+    overflow: auto;
+    border-collapse: collapse;
+    margin-bottom: 3em;
 }
 
 .table th {
-    color: #f4d47c;
+    color: white;
 }
 
 .table tr {
-    color: #fae6af;
+    color: white;
 }
 
 .tablerow {
-    /* border: solid #5580a4; */
     padding: 1em 0;
 }
 
 .sattaform{
     width: 80%;
     margin: 0 auto;
-    background-color: #082c6c;
+    background-color: #363636;
+    border-radius: 20px;
     padding: 2em;
     padding-top: 1em;
-    box-shadow: 12px 12px;
-    color:#fae6af;
+    box-shadow: 12px 12px 24px;
+    color:white;
 
 }
-tr:nth-child(even) {background-color: #696969;}
+th, tr:nth-child(even) {background-color: #696969;}
 
-
-h2{
-    text-decoration: underline;
+tr:nth-child(even) td {
+    margin-left: 0;
+    padding-left: 0;
 }
+
 
 h1, h2, h4{
-    color: #f4d47c;
+    color: white;
 }
 
 p, label span {
-    color: #fae6af;
+    color: white;
 }
 
 .btn-satta{

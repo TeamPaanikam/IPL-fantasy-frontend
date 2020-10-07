@@ -18,7 +18,7 @@ const headContainer = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    minHeight: "20vh",
+    minHeight: "5em",
     textAlign:"center",
     flexDirection: "column"
 };
