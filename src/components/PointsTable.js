@@ -44,7 +44,7 @@ class PointsTable extends React.Component {
                                 data.splice(index, 1);
                                 data.push(element)
                                 this.setState({ data: data })
-                            }}>Current Score</th>
+                            }}>Today</th>
                             <th className="tablerow" onClick={() => {
                                 let data = this.state.data
                                 data.sort((a, b) => {
@@ -56,8 +56,9 @@ class PointsTable extends React.Component {
                                 data.splice(index, 1);
                                 data.push(element)
                                 this.setState({ data: data })
-                            }}>Cumulative Score</th>
+                            }}>Total</th>
                             <th className="tablerow">Bonus</th>
+                            <th className="tablerow">Form</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -67,7 +68,8 @@ class PointsTable extends React.Component {
                                     <td className="tablerow">{this.capitalizeFirstLetter(r.username.split('@')[0])}</td>
                                     <td className="tablerow">{r.currScore}</td>
                                     <td className="tablerow">{r.cumScore + r.currScore}</td>
-                                    <td className="tablerow" style={{'padding': '10px'}}><Progress completed = {r.bonusProgress} color={'#f7f5fa'}/></td>
+                                    <td className="tablerow" style={{'padding': '5px'}}><Progress completed = {r.bonusProgress} color={'#f7f5fa'}/></td>
+                                    <td className={r.formIndicator >= 0 ? 'tablerow green': 'tablerow red'} style={{'padding': '5px'}}><Progress completed ={Math.abs(r.formIndicator)*20} color={r.formIndicator >= 0 ? '#5cfe6e': '#ff4d4d'}/></td>
                                 </tr>
                                 )
                             )

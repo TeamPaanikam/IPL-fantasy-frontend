@@ -14,8 +14,11 @@
 .searchContainer{
     background-color: #525252;
     display: flex;
-    padding:2em;
     flex-direction: column;
+}
+
+.teams {
+    padding:2em;
 }
 
 .btn{

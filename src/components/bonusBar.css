@@ -1,3 +1,11 @@
 .progressbar-container {
     border: 2px solid #f7f5fa;
 }
+
+.green .progressbar-container {
+    border: 2px solid #5cfe6e;
+}
+
+.red .progressbar-container {
+    border: 2px solid #ff4d4d;
+}

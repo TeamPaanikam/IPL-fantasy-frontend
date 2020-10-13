@@ -138,7 +138,7 @@ class SattaForm extends React.Component {
     render() {
         return (
             this.state.loading ? (<h1>Loading Satta form</h1>) : (
-                !this.props.status || this.state.alreadySelected ? (<div><Teams teams={this.state.teams} /></div>) : (
+                !this.props.status || this.state.alreadySelected ? (<div className="teams"><Teams teams={this.state.teams} /></div>) : (
                     <div className="sattaform">
                         <form>
                             <h2>Batsmen</h2>
