@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 export default function Teams(props) {
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
+    useEffect(()=>{
+        props.teams.forEach(team => {
+            team.players.sort();
+        });
+    })
     return (
         <div>
             <h1>Teams</h1>
