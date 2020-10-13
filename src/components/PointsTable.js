@@ -1,4 +1,6 @@
 import React from 'react';
+import Progress from 'react-progressbar';
+import './bonusBar.css'
 
 class PointsTable extends React.Component {
     serverEndpoint = require('../config.json').APIConfig.baseURL
@@ -31,7 +33,6 @@ class PointsTable extends React.Component {
                 <table className="table">
                     <thead>
                         <tr className="tableheader">
-                            <th className="tablerow">Position</th>
                             <th className="tablerow">Name</th>
                             <th className="tablerow" onClick={() => {
                                 let data = this.state.data
@@ -56,16 +57,17 @@ class PointsTable extends React.Component {
                                 data.push(element)
                                 this.setState({ data: data })
                             }}>Cumulative Score</th>
+                            <th className="tablerow">Bonus</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
                             this.state.data.map((r, index) =>
                                 (<tr className="tablerow" key={r._id}>
-                                    <td className="tablerow">{index + 1}</td>
                                     <td className="tablerow">{this.capitalizeFirstLetter(r.username.split('@')[0])}</td>
                                     <td className="tablerow">{r.currScore}</td>
                                     <td className="tablerow">{r.cumScore + r.currScore}</td>
+                                    <td className="tablerow" style={{'padding': '10px'}}><Progress completed = {r.bonusProgress} color={'#f7f5fa'}/></td>
                                 </tr>
                                 )
                             )
