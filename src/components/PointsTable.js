@@ -1,5 +1,7 @@
 import React from 'react';
 import Progress from 'react-progressbar';
+import MatchScore from './MatchScore';
+
 import './bonusBar.css'
 
 class PointsTable extends React.Component {
@@ -30,6 +32,7 @@ class PointsTable extends React.Component {
     render() {
         return (
             <div>
+                <MatchScore/>
                 <table className="table">
                     <thead>
                         <tr className="tableheader">
