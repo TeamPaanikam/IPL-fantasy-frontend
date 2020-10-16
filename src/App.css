@@ -106,5 +106,7 @@ p, label span {
 }
 .flex{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding-left: 1em;
+    padding-right: 1em;
 }
